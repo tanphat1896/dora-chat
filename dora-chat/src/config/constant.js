@@ -1,2 +1,2 @@
-export const ENV = "dev"
-export const API_URL = ENV === "dev" ? "http://localhost:8888" : ""
+export const ENV = "dev";
+export const API_URL = ENV === "dev" ? "http://localhost:8888" : "";
