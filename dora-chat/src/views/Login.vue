@@ -83,44 +83,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login-bg {
-  background-image: url("~@/assets/img/login-bg.jpg");
-  background-size: 100% auto;
-  background-position: top;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.segment {
-  position: fixed;
-  top: 50%;
-  transform: translate(-75%, -60%);
-  position: fixed;
-  left: 50%;
-}
-.avt {
-  &--choosing {
-    margin: 5px 0;
-    &.error {
-      box-shadow: 0 0 5px red;
-    }
-  }
-  cursor: pointer;
-  width: 48px;
-  border: 1px dashed gray;
-  border-radius: 999px;
-  padding: 5px;
-  &:not(:last-child) {
-    margin-right: 5px;
-  }
-  &:hover {
-    border: none;
-    box-shadow: 0 0 5px lightblue;
-  }
-  &.active {
-    border: 3px solid green;
-  }
-}
+@import '@/assets/scss/login.scss';
 </style>
