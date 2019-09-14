@@ -15,6 +15,9 @@ class WsConfig : WebSocketMessageBrokerConfigurer {
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint("/gs").setAllowedOrigins("*").withSockJS()
+        registry
+            .addEndpoint("/ws-dora")
+            .setAllowedOrigins("*")
+            .withSockJS()
     }
 }
