@@ -18,6 +18,7 @@ class WsConfig : WebSocketMessageBrokerConfigurer {
         registry
             .addEndpoint("/ws-dora")
             .setAllowedOrigins("*")
+            .addInterceptors()
             .withSockJS()
     }
 }
