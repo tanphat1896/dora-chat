@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-bg"></div>
-    <div v-if="name && connected" class="ui container">
+    <div v-if="token && connected" class="ui container">
       <div class="ui blue raised segment chatbox">
         <h1 class="ui dividing header">Chat box</h1>
         <div class="chatbox__banner"></div>
@@ -67,12 +67,13 @@ export default {
     };
   },
   computed: {
-    ...mapState(["name", "avt"])
+    ...mapState(["name", "avt", "token"])
   },
   created() {
-    if (!this.name) {
-      return this.$router.push({ name: "Login" });
+    if (!this.token) {
+      return this.$router.push({ name: "SignIn" });
     }
+    this.connect(this.token);
   },
   methods: {
     joinRoom() {
@@ -92,6 +93,7 @@ export default {
       );
     },
     sendMessage() {
+      if (this.msg.trim() === '') return
       this.stomp.send(
         "/app/chat",
         JSON.stringify({

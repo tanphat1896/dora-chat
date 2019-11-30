@@ -1,10 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import * as auth from "./services/auth"
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    token: null,
     name: null,
     avt: null
   },
@@ -12,13 +14,15 @@ export default new Vuex.Store({
     SET_LOGIN(state, payload) {
       state.name = payload.name || null;
       state.avt = payload.avt || null;
+    },
+    SET_TOKEN(state, token) {
+      state.token = token;
     }
   },
   actions: {
-    actionJoin({ commit }, payload) {
-      console.log("stor1");
-      commit("SET_LOGIN", payload);
-      console.log("stor2");
+    async actionJoin({ commit }, credential) {
+      const { token } = await auth.signin(credential);
+      commit("SET_TOKEN", token);
     }
   }
 });

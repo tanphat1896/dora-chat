@@ -10,12 +10,9 @@ export default {
       connected: false
     };
   },
-  created() {
-    this.connect();
-  },
   methods: {
-    connect() {
-      this.socket = new SockJs(`${API_URL}/ws-dora`);
+    connect(token) {
+      this.socket = new SockJs(`${API_URL}/ws-dora?token=Bearer ${token}`);
       this.stomp = Stomp.over(this.socket);
       this.stomp.connect({}, this.onConnected);
     },
